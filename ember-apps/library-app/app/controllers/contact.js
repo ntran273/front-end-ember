@@ -2,14 +2,15 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 
+
   emailAddress: '',
   messages: '',
 
 //Check valid
 isValid: Ember.computed.match('emailAddress', /^.+@.+\..+$/),
 isLength: Ember.computed.gte('messages.length', 5),
-isDisabled: Ember.computed.and('isValid', 'isLength'),
-isConditionValid: Ember.computed.not('isDisable'),
+isConditionValid: Ember.computed.and('isValid', 'isLength'),
+isDisabled: Ember.computed.not('isConditionValid'),
 
 
 //Set click action
