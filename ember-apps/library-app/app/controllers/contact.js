@@ -2,16 +2,15 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 
-  isDisabled: true,
-
   emailAddress: '',
+  messages: '',
 
 //Check valid
 isValid: Ember.computed.match('emailAddress', /^.+@.+\..+$/),
+isLength: Ember.computed.gte('messages.length', 5),
+isDisabled: Ember.computed.and('isValid', 'isLength'),
+isConditionValid: Ember.computed.not('isDisable'),
 
-//Check whether a property is empty or not
- isDisabled: Ember.computed.empty('emailAddress'),
- isDisabled: Ember.computed.empty('messages'),
 
 //Set click action
 actions:{
